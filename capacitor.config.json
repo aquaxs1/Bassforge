@@ -1,0 +1,14 @@
+{
+  "appId": "com.aquaxs1.bassforge",
+  "appName": "BassForge",
+  "webDir": "www",
+  "backgroundColor": "#000000",
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#000000"
+  },
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#000000"
+  }
+}

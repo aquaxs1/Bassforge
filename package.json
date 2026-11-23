@@ -1,0 +1,67 @@
+{
+  "name": "bassforge",
+  "version": "1.0.0",
+  "description": "BassForge – Song-Mixer mit Bass-Boost, Timeline und TikTok-Video-Export",
+  "main": "electron/main.cjs",
+  "author": "aquaxs1",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build:web": "node scripts/build-web.mjs",
+    "build:artifact": "node scripts/build-web.mjs --artifact",
+    "start": "npm run build:web && electron .",
+    "dist:win": "npm run build:web && electron-builder --win --publish never",
+    "cap:sync": "npm run build:web && cap sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@capacitor/share": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@fontsource/anton": "^5.2.0",
+    "@fontsource/archivo-black": "^5.2.0",
+    "@fontsource/bebas-neue": "^5.2.0",
+    "@fontsource/black-ops-one": "^5.2.0",
+    "@fontsource/bungee": "^5.2.0",
+    "@fontsource/jetbrains-mono": "^5.2.0",
+    "@fontsource/monoton": "^5.2.0",
+    "@fontsource/montserrat": "^5.2.0",
+    "@fontsource/oswald": "^5.2.0",
+    "@fontsource/permanent-marker": "^5.2.0",
+    "@fontsource/playfair-display": "^5.2.0",
+    "@fontsource/press-start-2p": "^5.2.0",
+    "@fontsource/righteous": "^5.2.0",
+    "@fontsource/russo-one": "^5.2.0",
+    "@fontsource/space-grotesk": "^5.2.0",
+    "@fontsource/teko": "^5.2.0",
+    "@fontsource/unbounded": "^5.2.0",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.0.0",
+    "mp4-muxer": "5.2.2",
+    "webm-muxer": "5.1.4"
+  },
+  "build": {
+    "appId": "com.aquaxs1.bassforge",
+    "productName": "BassForge",
+    "copyright": "© aquaxs1",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["electron/**", "www/**", "package.json", "!node_modules/@capacitor/**"],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [ { "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] } ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "BassForge",
+      "artifactName": "BassForge-Setup-${version}.${ext}"
+    },
+    "portable": { "artifactName": "BassForge-Portable-${version}.${ext}" }
+  }
+}
